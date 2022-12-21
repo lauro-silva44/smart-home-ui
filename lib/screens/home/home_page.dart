@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                       childAspectRatio: 1 / 1.3, crossAxisCount: 2),
                   itemBuilder: ((context, index) {
                     return Padding(
-                        padding: EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(8.0),
                         child: SmartDeviceBox(
                             iconPath: mySmartDevices[index][1],
                             name: mySmartDevices[index][0],
