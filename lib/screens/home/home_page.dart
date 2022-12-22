@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../components/smart_device_box.dart';
 
@@ -28,29 +29,38 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Icon(
+                Icons.person,
+                size: 35,
+                color: Colors.grey[800],
+              ),
+            ],
+          ),
+          backgroundColor: Colors.grey[50],
+          elevation: 0,
+          shadowColor: Colors.transparent,
+          leading: Builder(builder: (BuildContext context) {
+            return Material(
+              child: IconButton(
+                icon: SvgPicture.asset(
+                  'assets/icons/menu-2.svg',
+                  color: Colors.grey[800],
+                  height: 24,
+                ),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+              ),
+            );
+          })),
       body: SafeArea(
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding:
-                EdgeInsets.symmetric(horizontal: defaultPadding, vertical: 25),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SvgPicture.asset(
-                  'assets/icons/menu-2.svg',
-                  color: Colors.grey[800],
-                  height: 30,
-                ),
-                Icon(
-                  Icons.person,
-                  size: 45,
-                  color: Colors.grey[800],
-                )
-              ],
-            ),
-          ),
           const SizedBox(
             height: 20,
           ),
@@ -90,6 +100,42 @@ class _HomePageState extends State<HomePage> {
                   })))
         ],
       )),
+      drawer: Drawer(
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 60),
+              decoration: BoxDecoration(
+                color: Colors.black,
+              ),
+              child: Text(
+                'My Smart Home',
+                style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 26,
+                    color: Colors.white),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.on_device_training),
+              title: const Text('Item 1'),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+            ListTile(
+              title: const Text('Item 2'),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
