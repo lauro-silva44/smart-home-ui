@@ -68,11 +68,12 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.symmetric(horizontal: defaultPadding),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text('Welcome Home,'),
+              children: [
+                const Text('Welcome Home,'),
                 Text(
                   'Kemily Spínola',
-                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.normal),
+                  style: GoogleFonts.mavenPro(
+                      fontSize: 40, fontWeight: FontWeight.normal),
                 )
               ],
             ),
@@ -100,40 +101,117 @@ class _HomePageState extends State<HomePage> {
                   })))
         ],
       )),
-      drawer: Drawer(
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 60),
-              decoration: BoxDecoration(
-                color: Colors.black,
-              ),
-              child: Text(
-                'My Smart Home',
-                style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 26,
-                    color: Colors.white),
-              ),
+      drawer: SafeArea(
+        top: true,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          child: Drawer(
+            backgroundColor: Colors.transparent,
+            child: ListView(
+              // Important: Remove any padding from the ListView.
+              padding: EdgeInsets.zero,
+              children: [
+                DrawerHeader(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 60),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(18),
+                    color: Colors.black87,
+                  ),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(
+                        'assets/icons/smart-home.svg',
+                        color: Colors.white,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'My Smart Home',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 26,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.7,
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 5, vertical: 5),
+                        decoration: BoxDecoration(
+                            color: Colors.grey[300],
+                            borderRadius: BorderRadius.circular(8)),
+                        child: ListTile(
+                          leading: Container(
+                            height: 32,
+                            width: 32,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: Colors.black,
+                            ),
+                            child: Icon(
+                              Icons.add_circle_outline_rounded,
+                              color: Colors.white,
+                            ),
+                          ),
+                          title: const Text('Add devices'),
+                          onTap: () {
+                            // Update the state of the app.
+                            // ...
+                          },
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 5, vertical: 5),
+                        decoration: BoxDecoration(
+                            color: Colors.grey[300],
+                            borderRadius: BorderRadius.circular(8)),
+                        child: ListTile(
+                          leading: Container(
+                            height: 32,
+                            width: 32,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: Colors.black,
+                            ),
+                            child: Icon(
+                              Icons.add_circle_outline_rounded,
+                              color: Colors.white,
+                            ),
+                          ),
+                          title: const Text('Add devices'),
+                          onTap: () {
+                            // Update the state of the app.
+                            // ...
+                          },
+                        ),
+                      ),
+                      ListTile(
+                        title: const Text('Item 2'),
+                        onTap: () {
+                          // Update the state of the app.
+                          // ...
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-            ListTile(
-              leading: Icon(Icons.on_device_training),
-              title: const Text('Item 1'),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
-            ),
-            ListTile(
-              title: const Text('Item 2'),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
-            ),
-          ],
+          ),
         ),
       ),
     );

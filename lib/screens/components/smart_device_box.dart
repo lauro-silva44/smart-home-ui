@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SmartDeviceBox extends StatelessWidget {
   final String name, iconPath;
@@ -39,7 +40,7 @@ class SmartDeviceBox extends StatelessWidget {
                     child: Padding(
                   padding: const EdgeInsets.only(left: 25.0),
                   child: Text(name,
-                      style: TextStyle(
+                      style: GoogleFonts.mavenPro(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
                           color:
